@@ -34,13 +34,23 @@ public class LoginTestingStep {
 	log("Enter credentials");
 	driver.findElement(By.cssSelector(LoginTestingPage.emailAdreesField)).sendKeys(LoginTestingPage.email);
 	TimeUnit.SECONDS.sleep(3);
+	try {
 	WaitForElementVisible(LoginTestingPage.loginButton);
 	driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
-	TimeUnit.SECONDS.sleep(2);
+	TimeUnit.SECONDS.sleep(3);
 	WaitForElementVisible(LoginTestingPage.passwordField);
 	driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.Pass);
 	WaitForElementVisible(LoginTestingPage.loginButton);
 	driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+	} catch(Exception e) {
+	    WaitForElementVisible(LoginTestingPage.loginButton);
+		driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+		TimeUnit.SECONDS.sleep(3);
+		WaitForElementVisible(LoginTestingPage.passwordField);
+		driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.Pass);
+		WaitForElementVisible(LoginTestingPage.loginButton);
+		driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+	}
 	log("Sucessful login");
 	TimeUnit.SECONDS.sleep(1);
     }
@@ -96,7 +106,7 @@ public class LoginTestingStep {
 	driver.findElement(By.cssSelector(LoginTestingPage.emailAdreesField)).sendKeys(LoginTestingPage.email);
 	WaitForElementVisible(LoginTestingPage.continueButton);
 	driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
-	TimeUnit.SECONDS.sleep(2);
+	TimeUnit.SECONDS.sleep(3);
 	log("Enter unothrized password");
 	WaitForElementVisible(LoginTestingPage.passwordField);
 	driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.wrongPass);
