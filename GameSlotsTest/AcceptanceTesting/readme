@@ -1,0 +1,26 @@
+  Here is my Evernote Maven Project with Java and Selenium
+Prerequisites:
+At the starting of the test a Note should already exist
+All the dependencies are added to Pom.xml file
+
+Framework description:
+There are 4 files that construct this framework:
+	- LoginTestingCest - This is the class that should be run in order to start the test. Here are the major methods called.
+	- LoginTestingStep - Here are all the methods nested. 
+	- LoginTestingPage - Here are all the locators and strings nested.
+	- pom.xml 	   - Here are all the dependencies required. 
+The test has all the methods nested in TestingLoginStep file.
+The test has a method called OpenBrowser to initiate the ChromeDriver which is called at the start of the test.
+There are 4 major methods created for each step of the test:
+	- UnothorizedLogin - Is the method where I test the login process with bad credentials. This method has separated Chrome session
+	- AuthorizedLogin  - Is the method where the login process is successfully completed
+	- Write a note     - Is the method where the session where was left after AuthorizedLogin and creates a note 
+			     with a title and a message and also logs out of the account and opened the note which was 
+			     already created by the time when the test started
+	- Move to trash     - Moves the note already existed before the test start in order to have
+	the note previously created displayed
+Beside this methods there are several other methods for
+- Login	- Starts login session
+- Logout - Starts logout session
+- WaitForElementVisible - Waits an css element to get visible
+- Log - Prints all the steps in console
