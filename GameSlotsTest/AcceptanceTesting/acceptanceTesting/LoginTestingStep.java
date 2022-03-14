@@ -18,8 +18,6 @@ public class LoginTestingStep {
 
     public static WebDriver driver;
     static String baseurl = LoginTestingPage.URL;
-//    public static String sessionId;
-//    public static String sessionId;
 
     @Test
     public static void AuthotisedLogin() throws InterruptedException {
@@ -28,29 +26,36 @@ public class LoginTestingStep {
 	TimeUnit.SECONDS.sleep(1);
     }
 
+    public static void log(String logText) {
+	System.out.println(logText);
+    }
+
     public static void Login() throws InterruptedException {
 	log("Click on the login button");
 	driver.findElement(By.cssSelector(LoginTestingPage.loginHeaderButton)).click();
 	log("Enter credentials");
 	driver.findElement(By.cssSelector(LoginTestingPage.emailAdreesField)).sendKeys(LoginTestingPage.email);
 	TimeUnit.SECONDS.sleep(3);
+
 	try {
-	WaitForElementVisible(LoginTestingPage.loginButton);
-	driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
-	TimeUnit.SECONDS.sleep(3);
-	WaitForElementVisible(LoginTestingPage.passwordField);
-	driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.Pass);
-	WaitForElementVisible(LoginTestingPage.loginButton);
-	driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
-	} catch(Exception e) {
 	    WaitForElementVisible(LoginTestingPage.loginButton);
-		driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
-		TimeUnit.SECONDS.sleep(3);
-		WaitForElementVisible(LoginTestingPage.passwordField);
-		driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.Pass);
-		WaitForElementVisible(LoginTestingPage.loginButton);
-		driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+	    driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+	    TimeUnit.SECONDS.sleep(3);
+	    WaitForElementVisible(LoginTestingPage.passwordField);
+	    driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.Pass);
+	    WaitForElementVisible(LoginTestingPage.loginButton);
+	    driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+
+	} catch (Exception e) {
+	    WaitForElementVisible(LoginTestingPage.loginButton);
+	    driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
+	    TimeUnit.SECONDS.sleep(3);
+	    WaitForElementVisible(LoginTestingPage.passwordField);
+	    driver.findElement(By.cssSelector(LoginTestingPage.passwordField)).sendKeys(LoginTestingPage.Pass);
+	    WaitForElementVisible(LoginTestingPage.loginButton);
+	    driver.findElement(By.cssSelector(LoginTestingPage.loginButton)).click();
 	}
+
 	log("Sucessful login");
 	TimeUnit.SECONDS.sleep(1);
     }
@@ -158,9 +163,5 @@ public class LoginTestingStep {
 	String articleLocator = "(//div[@id='qa-HOME_NOTE_WIDGET_NOTE_LIST_2|0_0|0_3DJUU3|13'])[1]";
 	driver.findElement(By.xpath(articleLocator)).click();
 	TimeUnit.SECONDS.sleep(2);
-    }
-    
-    public static void log(String logText) {
-	System.out.println(logText);
     }
 }
